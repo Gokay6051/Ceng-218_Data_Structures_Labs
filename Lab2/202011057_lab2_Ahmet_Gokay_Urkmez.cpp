@@ -1,6 +1,7 @@
 // 2 boyutlu vector eklenecek
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -10,16 +11,21 @@ private:
  	int cols;
  	int Nterms; // number of nonzero elements
  	int capacity; // size of smArray
+ 	float ZeroPercentage;
  	
 public:
 	//vector<int> smArray;
 	
 	SparseMatrix(int rows, int cols, int Nterms): rows{rows}, cols{cols}, Nterms{Nterms}, capacity{30} {
-		generateRandomSparseMatrix(rows, cols, 1.0*(rows*cols-Nterms)/(rows*cols)*100 ); // Burada Kaldýk
+		generateRandomSparseMatrix(rows, cols, calculateZeroPer()); // Burada Kaldýk
 	}  
 	
-	SparseMatrix generateRandomSparseMatrix(int nrows, int ncols, int ZeroPercentage){
+	SparseMatrix generateRandomSparseMatrix(int nrows, int ncols, float ZeroPercentage){
+		
+	}
 	
+	float calculateZeroPer() {
+		return 1.0*(rows*cols-Nterms)/(rows*cols)*100;
 	}
 	
 	friend ostream& operator<<(ostream& OS, SparseMatrix& SM);
@@ -47,8 +53,7 @@ int main() {
  	cin >> rows >> cols >> ZeroPercentage;
  	*/
  	int rows, cols, Nterms;
+ 	cout <<"Enter number of rows, columns and nonzero elements: ";
  	cin >> rows >> cols >>  Nterms;
- 	int final = 1.0*(rows*cols-Nterms)/(rows*cols)*100;
- 	cout << final;
  	
 }
