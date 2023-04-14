@@ -20,7 +20,7 @@ public:
 		return data[i][j];
 	}
 	
-	Matrix operator +(const Matrix& other) {
+	Matrix operator +(const Matrix& other) const{
 		Matrix result(this->rows, this->cols);
 		// function will be add to matrices have different dimensions
         
@@ -29,6 +29,42 @@ public:
                 result(i, j) = (*this)(i, j) + other(i, j);
             }
         }
+		
+		return result;
+	}
+	
+	Matrix operator -(const Matrix& other) const{
+		Matrix result(this->rows, this->cols);
+		
+		for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result(i, j) = (*this)(i, j) - other(i, j);
+            }
+        }
+        
+        return result;
+	}
+	
+	Matrix operator /(int num) const{
+		Matrix result(rows, cols);
+		
+		for(int i=0; i<rows; ++i) {
+			for(int j=0; j<cols; ++j) {
+				result(i,j) = (*this)(i,j) / num;
+			}
+		}
+		
+		return result;
+	}
+	
+	Matrix operator *(int num) const{
+		Matrix result(rows, cols);
+		
+		for(int i=0; i<rows; ++i) {
+			for(int j=0; j<cols; ++j) {
+				result(i,j) = (*this)(i,j) * num;
+			}
+		}
 		
 		return result;
 	}
@@ -69,6 +105,15 @@ int main() {
 	
 	Matrix c = a + b;
     cout << "c = a + b:\n" << c << endl;
+    
+    Matrix d = a - b;
+    std::cout << "d = a - b:\n" << d << '\n';
+
+    Matrix e = a / 2;
+    std::cout << "e = a / 2:\n" << e << '\n';
+
+    Matrix f = b * 3;
+    std::cout << "f = b * 3:\n" << f << '\n';
 	
 }
 
