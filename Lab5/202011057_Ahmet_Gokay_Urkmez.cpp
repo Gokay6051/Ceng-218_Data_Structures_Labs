@@ -89,7 +89,7 @@ public:
    StackLL(T val) {data.append("");}
    bool isEmpty( ) { return data.isEmpty( ); }
    int cntElts( ) { return data.getCnt(); }
-   void pop() { data.deleteLast()};
+   void pop() { data.deleteLast();};
    void push(T x) { data.append(x);}
 };
 
